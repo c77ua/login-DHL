@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      background-image: url('patio_dhl.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: transparent;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px transparent;
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    label {
+      color: white;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: white;
+      color: #ffb84d;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .resultado {
+      margin-top: 10px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Login</h2>
+    <form id="formLogin">
+      <label>Email:</label>
+      <input type="email" id="emailLogin" required>
+
+      <label>Senha:</label>
+      <input type="password" id="senhaLogin" required>
+
+      <button type="submit">Entrar</button>
+    </form>
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    
+  const form = document.getElementById('formLogin');
+  const resultado = document.getElementById('resultado');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const emailLogin = document.getElementById('emailLogin').value;
+    const senhaLogin = document.getElementById('senhaLogin').value;
+
+    const emailSalvo = localStorage.getItem('email');
+    const senhaSalva = localStorage.getItem('senha');
+
+    if (emailLogin === emailSalvo && senhaLogin === senhaSalva) {
+      resultado.innerHTML = 'Login realizado com sucesso! Redirecionando...';
+
+      // Aguarda 1 segundo e redireciona para o Looker Studio
+      setTimeout(() => {
+        window.location.href = "https://lookerstudio.google.com/reporting/8e3c330c-566f-4270-bc80-c53e5363d34d";
+      }, 1000);
+
+    } else {
+      resultado.innerHTML = 'Email ou senha incorretos.';
+    }
+  });
+</script>
+</body>
+</html>

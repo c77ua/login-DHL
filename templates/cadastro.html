@@ -1,0 +1,108 @@
+<<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro</title>
+  <style>
+    body {
+      background-image: url('DHL_IMAGEM.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: transparent;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px transparent;
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+    }
+
+    label {
+      color: white;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: white;
+      color: #060505;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .resultado {
+      margin-top: 10px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Cadastro</h2>
+    <form id="formCadastro">
+      <label>Nome:</label>
+      <input type="text" id="nome" required>
+
+      <label>Email:</label>
+      <input type="email" id="email" required>
+
+      <label>Senha:</label>
+      <input type="password" id="senha" required>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('formCadastro');
+    const resultado = document.getElementById('resultado');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      // Salvar no localStorage do navegador
+      localStorage.setItem('email', email);
+      localStorage.setItem('senha', senha);
+
+      resultado.innerHTML = `Usuário ${nome} cadastrado com sucesso!`;
+
+      form.reset();
+
+      window.location.href = "login.html";
+
+    });
+  </script>
+</body>
+</html>
